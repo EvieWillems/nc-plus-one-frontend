@@ -1,5 +1,5 @@
 import EventsList from '../components/EventsList'
-import type { EventsListFilter } from '../../types/types'
+import type { EventsListFilter } from '../types/types'
 
 
 

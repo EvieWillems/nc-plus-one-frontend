@@ -1,4 +1,4 @@
-import type { PlusOneEvent } from "../../types/types";
+import type { PlusOneEvent } from "../types/types";
 
 
 export default function EventCard(props:{event:PlusOneEvent}) {

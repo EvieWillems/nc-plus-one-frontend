@@ -1,4 +1,4 @@
-import type { EventsListFilter, EventPayload } from "../../types/types";
+import type { EventsListFilter, EventPayload } from "../types/types";
 import apiGet from "./client";
 
 

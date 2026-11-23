@@ -1,4 +1,4 @@
-import type { EventsListFilter, PlusOneEvent } from "../../types/types";
+import type { EventsListFilter, PlusOneEvent } from "../types/types";
 import { useEventsList } from "../hooks/useEventsList";
 import EventCard from "./EventCard";
 

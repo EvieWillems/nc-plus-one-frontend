@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import type { EventPayload, EventsListFilter, PageStatus } from '../../types/types'
+import type { EventPayload, EventsListFilter, PageStatus } from '../types/types'
 import { getEventsList } from '../api/events';
 
 
