@@ -30,3 +30,19 @@ export interface ReadableDateInfo {
     readableStartTime:string;
     readableDuration:string
 }
+
+export interface LoginDetails {
+    email:string;
+    password:string;
+}
+
+export interface UserDetails extends LoginDetails {
+    id:number;
+    created_at:string;
+}
+
+export interface FetchArgs {
+    method:'POST'|'GET'|'DELETE';
+    headers: {'Content-Type':'application/json'};
+    body: string;
+}

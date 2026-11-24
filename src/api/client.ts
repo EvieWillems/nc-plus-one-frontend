@@ -1,3 +1,4 @@
+import type { FetchArgs } from "../types/types";
 
 
 export class ApiError extends Error {
@@ -9,12 +10,13 @@ export class ApiError extends Error {
   }
 }
 
-export default async function apiGet <T>(path:string):Promise<T> {
-    const response = await fetch(path);
+export default async function apiGet <T>(path:string, args?:FetchArgs):Promise<T> {
+    
+  const response = await fetch(path,args?args:undefined);
 
-    if (!response.ok) {
-        throw new ApiError('problem connecting to API',500);
-    };
+  if (!response.ok) {
+      throw new ApiError('problem connecting to API',500);
+  };
 
-    return await(response.json()) as T
+  return await(response.json()) as T
 }
