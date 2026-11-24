@@ -20,7 +20,7 @@ export default function EventsList (props:{filter:EventsListFilter}) {
         return (
             <ul aria-label='events list'>
                 <h3>Events:</h3>
-                {results.results.map((ev:PlusOneEvent) => <EventCard event={ev}/>)}
+                {results.results.map((ev:PlusOneEvent) => <EventCard event={ev} key={ev.id}/>)}
             </ul>
         )
     } else {

@@ -1,3 +1,4 @@
+import { NavLink } from "react-router";
 import type { PlusOneEvent } from "../types/types";
 
 
@@ -14,11 +15,13 @@ export default function EventCard(props:{event:PlusOneEvent}) {
     const durationString = `${durationHours} hour${durationHours>1?`s`:``}${(durationMinutes%60)>0?` ${durationMinutes%60} mins`:``}`
 
     return (
-        <li key={id} aria-label={`list item for event ${title}`}>
-            <p>Event: {title}</p>
-            <p>{readableDate}, beginning at {readableStartTime}</p>  
-            <p>Duration: {durationString}</p>
-            <p>Location: {location}</p>
-        </li>
+        <NavLink to={`/events/${id}`}>
+            <li key={id} aria-label={`list item for event ${title}`}>
+                <p>Event: {title}</p>
+                <p>{readableDate}, beginning at {readableStartTime}</p>  
+                <p>Duration: {durationString}</p>
+                <p>Location: {location}</p>
+            </li>
+        </NavLink>
     )
 }
