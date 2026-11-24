@@ -1,3 +1,41 @@
+:root {
+  --bg-color: rgb(247, 247, 247);
+  --card-bg: rgb(255, 255, 255);
+  --body-txt: rgba(0, 0, 0, 0.863);
+  --muted-txt: grey;
+  --accent: LightSeaGreen;
+  --border-clr: 2px solid rgb(209, 208, 207);
+  --success-green: LightGreen;
+  --danger-red: red;
+  --text-indent: 50px;
+  --border-radius: 25px;
+  --space: 25px;
+}
+
+.event-card {
+  display: flow-root;
+  list-style: none;
+  justify-content: space-between;
+  color: var(--body-txt);
+  margin: var(--space);
+  padding: 16px;
+  background: var(--card-bg);
+  border-right: 16px solid var(--border);
+  border-bottom: 16px solid var(--border);
+  border-radius: 16px;
+  text-decoration-line: none;
+  h3 {
+    color: var(--accent);
+    font-style: var(--sans);
+  }
+}
+
+.description {
+  color: var(--muted-txt);
+  margin: 8px;
+}
+
+
 .counter {
   font-size: 16px;
   padding: 5px 10px;
@@ -40,4 +78,3 @@
     height: 48px;
   }
 }
-

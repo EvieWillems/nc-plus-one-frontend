@@ -18,9 +18,15 @@ export interface EventFullDetail extends PlusOneEvent {
     address:string;
     created_at:string;
 }
-
+ 
 
 export type PageStatus<T extends PlusOneEvent|PlusOneEvent[]> =
     | {status: 'loading'}
     | {status: 'error'; message:string}
     | {status: 'success'; results:T}
+
+export interface ReadableDateInfo {
+    readableDate:string;
+    readableStartTime:string;
+    readableDuration:string
+}
