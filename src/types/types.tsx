@@ -12,11 +12,15 @@ export interface PlusOneEvent {
     location:string;
 }
 
-export interface EventPayload {
-    events:PlusOneEvent[]
+export interface EventFullDetail extends PlusOneEvent {
+    description:string;
+    capacity:number;
+    address:string;
+    created_at:string;
 }
 
-export type PageStatus<T extends EventPayload|PlusOneEvent> =
+
+export type PageStatus<T extends PlusOneEvent|PlusOneEvent[]> =
     | {status: 'loading'}
     | {status: 'error'; message:string}
     | {status: 'success'; results:T}
