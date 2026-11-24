@@ -1,5 +1,6 @@
 import { useSingleEvent } from "../hooks/useSingleEvent";
-import { parseTime } from './EventCard'
+import parseTime from '../utils/parseTime'
+
 
 
 export default function SingleEvent(props:{id:number}) {
