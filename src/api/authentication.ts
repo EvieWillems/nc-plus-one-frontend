@@ -1,7 +1,6 @@
 import apiGet from "./client";
 import type { FetchArgs, LoginDetails, UserDetails } from "../types/types";
 
-const apiUrl = import.meta.env.VITE_API_URL
 
 export function getNewToken(loginDetails:LoginDetails):Promise<string> {
 
@@ -11,7 +10,7 @@ export function getNewToken(loginDetails:LoginDetails):Promise<string> {
         body: JSON.stringify({loginDetails})
     };
     
-    return apiGet<string>(apiUrl+'/auth/login',fetchArgs)
+    return apiGet<string>('/auth/login',fetchArgs)
 }
 
 
@@ -23,5 +22,5 @@ export async function getUserDetails(token:string):Promise<UserDetails> {
         body: token
     };
 
-    return apiGet<UserDetails>(apiUrl+'/auth/user', fetchArgs)
+    return apiGet<UserDetails>('/auth/user', fetchArgs)
 }
