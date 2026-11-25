@@ -10,6 +10,9 @@ export default function Layout() {
             <NavLink to='/events'>
                 <div>Events</div>
             </NavLink>
+            <NavLink to='/user/account'>
+                <div>My Account</div>
+            </NavLink>
             <main>
                 <Outlet/>
             </main>

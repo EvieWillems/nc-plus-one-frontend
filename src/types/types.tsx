@@ -8,7 +8,7 @@ export interface PlusOneEvent {
     id:number;
     title:string;
     starts_at:string;
-    ends_at:string;
+    ends_at?:string;
     location:string;
 }
 
@@ -18,9 +18,8 @@ export interface EventFullDetail extends PlusOneEvent {
     address:string;
     created_at:string;
 }
- 
 
-export type PageStatus<T extends PlusOneEvent|PlusOneEvent[]> =
+export type PageStatus<T extends PlusOneEvent|PlusOneEvent[]|EventFullDetail|EventFullDetail[]|UserDetails> =
     | {status: 'loading'}
     | {status: 'error'; message:string}
     | {status: 'success'; results:T}
@@ -28,7 +27,6 @@ export type PageStatus<T extends PlusOneEvent|PlusOneEvent[]> =
 export interface ReadableDateInfo {
     readableDate:string;
     readableStartTime:string;
-    readableDuration:string
 }
 
 export interface LoginDetails {
@@ -38,13 +36,14 @@ export interface LoginDetails {
 
 export interface UserDetails extends LoginDetails {
     id:number;
+    name:string;
     created_at:string;
 }
 
 export interface FetchArgs {
-    method:'POST'|'GET'|'DELETE';
-    headers: {'Content-Type':'application/json'};
-    body: string;
+    method?:'POST'|'GET'|'DELETE';
+    headers: {'Content-Type':'application/json'}|{Authorization:string};
+    body?: string;
 }
 
 export type UserStatus = 

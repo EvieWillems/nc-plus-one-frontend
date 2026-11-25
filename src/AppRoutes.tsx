@@ -3,6 +3,7 @@ import Layout from './pages/Layout'
 import EventsListPage from './pages/EventsListPage';
 import LandingPage from './pages/LandingPage';
 import SingleEventPage from './pages/SingleEventPage';
+import UserAccount from './components/UserAccount';
 
 export default function AppRoutes() {
     return (
@@ -11,6 +12,7 @@ export default function AppRoutes() {
                 <Route index element={<LandingPage/>}/>
                 <Route path='events' element={<EventsListPage filter={'all'}/>}/>
                 <Route path='events/:eventId' element={<SingleEventPage/>}/>
+                <Route path='user/account' element={<UserAccount/>}/>
             </Route>
         </Routes>
     );

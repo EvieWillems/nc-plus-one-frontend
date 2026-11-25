@@ -3,7 +3,7 @@ import type { EventsListFilter, EventFullDetail, PlusOneEvent, FetchArgs } from 
 import apiGet from "./client";
 
 
-export function getEventsList(filter:EventsListFilter):Promise<{events:PlusOneEvent[]}> {
+export function getEventsList(filter:EventsListFilter):Promise<{events:PlusOneEvent[]|EventFullDetail[]}> {
     if (filter === 'all') {
         return apiGet('/events');
     } else {
@@ -12,11 +12,9 @@ export function getEventsList(filter:EventsListFilter):Promise<{events:PlusOneEv
             throw new Error('unauthorised')
         } else {
             const fetchArgs:FetchArgs = {
-                method:'GET',
-                headers: {'Content-Type':'application/json'},
-                body: token
+                headers: {Authorization: `Bearer ${token}`},
             };
-            return apiGet('/events/',fetchArgs);
+            return apiGet('/events/myrsvps',fetchArgs);
         }
     }
 }

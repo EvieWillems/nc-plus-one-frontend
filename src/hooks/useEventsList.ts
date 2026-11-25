@@ -9,7 +9,7 @@ export function useEventsList(filter:EventsListFilter):ListStatus {
 
     const [eventsListState, setEventsListState] = useState<ListStatus>({status:'loading'})
 
-    useEffect( () => {
+    useEffect(() => {
         const loadEventsList = async (filter:EventsListFilter) => {
             try {
                 const response = await getEventsList(filter);

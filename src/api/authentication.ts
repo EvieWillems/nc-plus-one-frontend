@@ -17,10 +17,9 @@ export function getNewToken(loginDetails:LoginDetails):Promise<string> {
 export async function getUserDetails(token:string):Promise<UserDetails> {
 
     const fetchArgs:FetchArgs = {
-        method:'GET',
-        headers: {'Content-Type':'application/json'},
-        body: token
+        headers: {Authorization: `Bearer ${token}`},
     };
 
-    return apiGet<UserDetails>('/auth/user', fetchArgs)
+    const results = apiGet<{details:UserDetails[]}>('/auth/user', fetchArgs)
+    return (await results).details[0]
 }
