@@ -46,3 +46,9 @@ export interface FetchArgs {
     headers: {'Content-Type':'application/json'};
     body: string;
 }
+
+export type UserStatus = 
+    | {status:'loading'}
+    | {status:'anonymous'}
+    | {status:'authenticated'; userDetails:UserDetails}
+    | {status:'error'; message:string}
