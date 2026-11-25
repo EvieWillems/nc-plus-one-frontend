@@ -20,7 +20,7 @@ export default function SingleEvent(props:{id:number}) {
               <p>{address}</p>
             </section>
             )
-    } else
-        return <p>error</p>
+    }
+    return <p>error</p>
     
 }

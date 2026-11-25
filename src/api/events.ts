@@ -11,5 +11,5 @@ export function getEventsList(filter:EventsListFilter):Promise<{events:PlusOneEv
 }
 
 export function getSingleEvent(id:number):Promise<{event:EventFullDetail[]}> {
-    return apiGet(import.meta.env.VITE_API_URL+'/events/'+id.toString())
+    return apiGet(import.meta.env.VITE_API_URL+'/events/:'+id.toString())
 }
