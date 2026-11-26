@@ -7,7 +7,7 @@ export function getNewToken(loginDetails:LoginDetails):Promise<string> {
     const fetchArgs:FetchArgs = {
         method:'POST',
         headers: {'Content-Type':'application/json'},
-        body: JSON.stringify({loginDetails})
+        body: JSON.stringify(loginDetails)
     };
     
     return apiGet<string>('/auth/login',fetchArgs)

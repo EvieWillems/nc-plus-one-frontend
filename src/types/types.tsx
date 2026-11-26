@@ -19,7 +19,7 @@ export interface EventFullDetail extends PlusOneEvent {
     created_at:string;
 }
 
-export type PageStatus<T extends PlusOneEvent|PlusOneEvent[]|EventFullDetail|EventFullDetail[]|UserDetails> =
+export type PageStatus<T> =
     | {status: 'loading'}
     | {status: 'error'; message:string}
     | {status: 'success'; results:T}
@@ -30,13 +30,16 @@ export interface ReadableDateInfo {
 }
 
 export interface LoginDetails {
+    name?:string;
     email:string;
     password:string;
 }
 
+
 export interface UserDetails extends LoginDetails {
     id:number;
     name:string;
+    email:string;
     created_at:string;
 }
 
@@ -51,3 +54,13 @@ export type UserStatus =
     | {status:'anonymous'}
     | {status:'authenticated'; userDetails:UserDetails}
     | {status:'error'; message:string}
+
+export interface FrontendError {
+    code?:number;
+    message:string;
+}
+
+export interface BackendError {
+    error:string;
+    detail:string;
+}

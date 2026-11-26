@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState, type ReactNode } from 'react';
+import { createContext, useContext, useEffect, useState, type ReactNode } from 'react';
 import type {LoginDetails, UserDetails, UserStatus} from '../types/types'
 import { clearToken, readToken, writeToken } from './tokenManager';
 import { getNewToken, getUserDetails } from '../api/authentication';
@@ -38,11 +38,20 @@ export function UserProvider({children}:{children:ReactNode}) {
     const login = async (details:LoginDetails) => {
         const token = await getNewToken(details);
         const user:UserDetails = await getUserDetails(token);
-        writeToken(token);
+        if (user) writeToken(token);
         setUserStatus({status:'authenticated',userDetails:user});
     }
 
     return <UserContext value={{userStatus,login}}>
         {children}
     </UserContext>
+}
+
+export function useUser() {
+    const context = useContext(UserContext);
+    if (context === undefined) {
+        throw new Error('user not defined');
+    } else {
+        return context;
+    };
 }

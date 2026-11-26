@@ -4,8 +4,7 @@ export function writeToken(token:string):void {
 }
 
 export function readToken():string|null {
-    // return localStorage.getItem('token');
-    return 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIyIiwiZXhwIjoxNzk1NjIzNDI0fQ.LPQB6rlbtQJSRcaVAwkFp0dNCWiFHktuCQT2HYkZTmU'
+    return localStorage.getItem('token');
 }
 
 export function clearToken():void {
