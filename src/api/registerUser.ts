@@ -1,4 +1,4 @@
-import type { BackendError, FetchArgs, LoginDetails, UserDetails } from "../types/types";
+import type { FetchArgs, LoginDetails, UserDetails } from "../types/types";
 import apiGet from "./client";
 
 
