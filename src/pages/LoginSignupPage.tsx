@@ -3,9 +3,10 @@ import type { LoginDetails } from "../types/types";
 import { useUser } from "../auth/userContext";
 import ErrorPage from "./ErrorPage";
 import registerUser from "../api/registerUser";
+import LoginSignupForm from "../components/LoginSignupForm";
 
-type Toggle = 'login'|'signup'
-type Field = 'email'|'password'|'name'
+export type Toggle = 'login'|'signup'
+export type Field = 'email'|'password'|'name'
 
 
 export default function LoginSignupPage() {
@@ -36,14 +37,14 @@ export default function LoginSignupPage() {
         }
     }
 
-    const submissionHandler = async (event:FormEvent<HTMLFormElement>) => {
+    const submissionHandler = (event:FormEvent<HTMLFormElement>) => {
         event.preventDefault()
         if (toggleState === 'login') {
             login(userFormState)
         } else {
             let userDetails
             if (formValues.name !== undefined) {
-                userDetails = await registerUser(
+                userDetails = registerUser(
                     {
                         name:formValues.name,
                         email:formValues.email,
@@ -60,23 +61,17 @@ export default function LoginSignupPage() {
         }
     }
 
+    const formProps = {
+        toggleState:toggleState,
+        name:formValues.name,
+        email:formValues.email,
+        password:formValues.password,
+        changeHandler:changeHandler,
+        submissionHandler:submissionHandler,
+        onToggle:onToggle
+    };
+
     return (
-        <form aria-label='login form' onSubmit={submissionHandler}>
-            {toggleState === 'signup'?<>
-                <label htmlFor='name' className="h3">name:</label>
-                <input id='name' value={formValues.name} onChange={changeHandler('name')}></input>
-            </>:<></>}
-            <label htmlFor='email' className="h3">email:</label>
-            <input id='email' value={formValues.email} onChange={changeHandler('email')}></input>
-            <label htmlFor='password' className="h3">password:</label>
-            <input id='password' value={formValues.password} onChange={changeHandler('password')}></input>
-            <button type='submit'>Submit</button>
-            <button type='button' onClick={onToggle}>
-                {toggleState==='login'?`Sign up`:`Log in`}
-            </button>
-        </form>
-    )
-
-
-
+        <LoginSignupForm formProps={formProps}/>
+    );
 }
