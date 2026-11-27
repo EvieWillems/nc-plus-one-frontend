@@ -7,6 +7,7 @@ import { getNewToken, getUserDetails } from '../api/authentication';
 interface UserContextValue {
     userStatus:UserStatus;
     login: (details:LoginDetails) => Promise<void>
+    logout: ()=>void
 }
 
 const UserContext = createContext<UserContextValue|undefined>(undefined);
@@ -42,7 +43,12 @@ export function UserProvider({children}:{children:ReactNode}) {
         setUserStatus({status:'authenticated',userDetails:user});
     }
 
-    return <UserContext value={{userStatus,login}}>
+    const logout = () => {
+        clearToken();
+        setUserStatus({status:'anonymous'});
+    }
+
+    return <UserContext value={{userStatus,login,logout}}>
         {children}
     </UserContext>
 }
