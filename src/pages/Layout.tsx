@@ -1,7 +1,10 @@
 import { NavLink, Outlet } from 'react-router'
+import { readToken } from '../auth/tokenManager';
+import { useUser } from '../auth/userContext';
 
 
 export default function Layout() {
+    const user = useUser()
     return(
         <>
             <NavLink to='/'>
@@ -13,9 +16,9 @@ export default function Layout() {
             <NavLink to='/user/account'>
                 <div>My events</div>
             </NavLink>
-            <NavLink to='/user/login'>
+            {user.userStatus.status!=='authenticated'&&<NavLink to='/user/login'>
                 <div>log in/sign up</div>
-            </NavLink>
+            </NavLink>}
             <main>
                 <Outlet/>
             </main>

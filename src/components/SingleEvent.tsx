@@ -24,10 +24,7 @@ export default function SingleEvent(props:{id:number}) {
                 {ends_at?<p>Duration: {readableDuration}</p>:<></>}
                 <p>Venue: {location} {'('}capacity: {capacity}{')'}</p>
                 <p>{address}</p>
-                {usersRsvps.status === 'success'?
-                    <RsvpButton content={{eventId:id,usersRsvps:usersRsvps.results}}/>:
-                    <></>
-                }
+                {usersRsvps.status === 'success'&&<RsvpButton content={{eventId:id,usersRsvps:usersRsvps.results}}/>}
             </section>
             );
     }
