@@ -2,7 +2,7 @@ import { readToken } from "../auth/tokenManager";
 import apiGet from "./client";
 
 
-export default function addRsvp(eventId:number) {
+export function addRsvp(eventId:number) {
     const token = readToken()
     const fetchArgs = {
         method:'POST' as const,
@@ -10,4 +10,14 @@ export default function addRsvp(eventId:number) {
     }
     console.log(eventId)
     apiGet<void>('/events/:'+eventId.toString()+'/rsvp',fetchArgs)
+}
+
+export function deleteRsvp(eventId:number) {
+    const token = readToken()
+    const fetchArgs = {
+        method:'DELETE' as const,
+        headers: {Authorization: `Bearer ${token}`}
+    }
+    console.log(eventId)
+    apiGet<void>('/events/:'+eventId.toString()+'/rsvp/delete',fetchArgs)
 }

@@ -1,15 +1,15 @@
-import addRsvp from "../api/rsvps";
+import { addRsvp, deleteRsvp } from "../api/rsvps";
 
 type ButtonStatus = 'going'|'notGoing'|'unauthenticated'
 
-export default function RsvpButton(props:{status:ButtonStatus,onClick:()=>void}) {
+export default function RsvpButton(props:{content:{status:ButtonStatus,eventId:number}}) {
     
-    const {status,onClick} = props;
+    const {status,eventId} = props.content;
     
     if (status === 'going') {
-        return <button type='button'>Cancel RSVP</button>;
+        return <button type='button' onClick={()=>deleteRsvp(eventId)}>Cancel RSVP</button>;
     } else if (status === 'notGoing') {
-        return <button type='button' onClick={onClick}>RSVP</button>;
+        return <button type='button' onClick={()=>addRsvp(eventId)}>RSVP</button>;
     } else {
         return <></>;
     };
