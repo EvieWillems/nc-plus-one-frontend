@@ -12,12 +12,20 @@ export default function Layout() {
             <NavLink to='/events'>
                 <div>Events</div>
             </NavLink>
+            {user.userStatus.status==='authenticated'?
+            <>
             <NavLink to='/user/account'>
                 <div>My events</div>
             </NavLink>
-            {user.userStatus.status!=='authenticated'&&<NavLink to='/user/login'>
+            <NavLink to='/events/new'>
+                <div>Create event</div>
+            </NavLink>
+            </>:
+            <NavLink to='/user/login'>
                 <div>log in/sign up</div>
             </NavLink>}
+            
+            
             <main>
                 <Outlet/>
             </main>

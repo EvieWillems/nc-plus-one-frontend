@@ -37,7 +37,7 @@ export default function LoginSignupPage() {
     }
 
     const submissionHandler = (event:FormEvent<HTMLFormElement>) => {
-        event.preventDefault()
+        event.preventDefault();
         if (toggleState === 'login') {
             login(userFormState)
         } else {

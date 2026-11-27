@@ -1,4 +1,5 @@
 import { readToken } from "../auth/tokenManager";
+import type { FormEventDetails } from "../pages/CreateEventPage";
 import type { EventsListFilter, EventFullDetail, PlusOneEvent, FetchArgs } from "../types/types";
 import apiGet from "./client";
 
@@ -21,4 +22,18 @@ export function getEventsList(filter:EventsListFilter):Promise<{events:PlusOneEv
 
 export function getSingleEvent(id:number):Promise<{event:EventFullDetail[]}> {
     return apiGet('/events/:'+id.toString())
+}
+
+export function createNewEvent(details:FormEventDetails,token:string) {
+
+    const fetchArgs = {
+        method:'POST' as const,
+        headers: {Authorization: `Bearer ${token}`,
+            'Content-Type':'application/json'},
+        body:JSON.stringify(details)
+    }
+    console.log(fetchArgs.body)
+
+    const result = apiGet<void>('/events/new',fetchArgs)
+    console.log(result)
 }

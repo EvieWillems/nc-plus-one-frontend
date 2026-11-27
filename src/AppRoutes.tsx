@@ -6,6 +6,7 @@ import SingleEventPage from './pages/SingleEventPage';
 import UserAccount from './components/UserAccount';
 import LoginSignupPage from './pages/LoginSignupPage';
 import ProtectedRoute from './components/ProtectedRoute';
+import CreateEventPage from './pages/CreateEventPage';
 
 export default function AppRoutes() {
     return (
@@ -17,6 +18,7 @@ export default function AppRoutes() {
                 <Route path='user/login' element={<LoginSignupPage/>}/>
                 <Route element={<ProtectedRoute/>}>
                     <Route path='user/account' element={<UserAccount/>}/>
+                    <Route path='events/new' element={<CreateEventPage/>}/>
                 </Route>
             </Route>
         </Routes>
