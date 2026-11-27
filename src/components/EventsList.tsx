@@ -13,17 +13,6 @@ export default function EventsList (props:{filter:EventsListFilter}) {
     const results = useEventsList(props.filter)
     const usersRsvps = useEventsList('rsvpd')
 
-    const buttonContent = (event:PlusOneEvent) => {
-        if (usersRsvps.status === 'success') {
-            if (usersRsvps.results.map((ev)=>ev.id).includes(event.id)) {
-                return 'going'
-            }
-            return 'notGoing'
-        } else {
-            return 'unauthenticated'
-        }
-    }
-
     if (results.status === 'error') {
         return (
             <>
@@ -48,7 +37,9 @@ export default function EventsList (props:{filter:EventsListFilter}) {
                             event={ev}
                             key={ev.id}
                             button={
-                                <RsvpButton content={{status:buttonContent(ev),eventId:ev.id}}/>
+                                usersRsvps.status==='success'?
+                                <RsvpButton content={{eventId:ev.id,usersRsvps:usersRsvps.results}}/>:
+                                <></>
                             }
                         />
                     )
