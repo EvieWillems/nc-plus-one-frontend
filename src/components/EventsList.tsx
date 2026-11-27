@@ -4,6 +4,7 @@ import EventCard from "./EventCard";
 import NotFoundPage from "../pages/NotFoundPage";
 import EmptyPage from "../pages/EmptyPage";
 import RsvpButton from './RsvpButton'
+import addRsvp from "../api/rsvps";
 
 
 
@@ -36,10 +37,22 @@ export default function EventsList (props:{filter:EventsListFilter}) {
         if (results.results.length === 0){
             return <EmptyPage message='No events to show'/>
         }
+        
         return (
             <ul aria-label='events list'>
                 <h3>Events:</h3>
-                {results.results.map((ev:PlusOneEvent) => <EventCard event={ev} key={ev.id} button={<RsvpButton status={buttonContent(ev)}/>}/>)}
+                {
+                results.results.map(
+                        (ev:PlusOneEvent) =>
+                        <EventCard
+                            event={ev}
+                            key={ev.id}
+                            button={
+                                <RsvpButton status={buttonContent(ev)} onClick={()=>addRsvp(ev.id)}/>
+                            }
+                        />
+                    )
+                }
             </ul>
         )
     } else {
