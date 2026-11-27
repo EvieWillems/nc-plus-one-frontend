@@ -1,4 +1,4 @@
-import type { ChangeEventHandler, FormEvent, SubmitEventHandler } from "react";
+import type { ChangeEventHandler, SubmitEventHandler } from "react";
 import type {Field, Toggle} from '../pages/LoginSignupPage'
 
 

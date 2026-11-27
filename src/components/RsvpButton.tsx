@@ -3,7 +3,6 @@ import { addRsvp, deleteRsvp } from "../api/rsvps";
 import type { PlusOneEvent } from "../types/types";
 import { readToken } from "../auth/tokenManager";
 
-type ButtonStatus = 'going'|'notGoing'|'unauthenticated'
 
 export function buttonContent (eventId:number,usersRsvps:PlusOneEvent[]) {
     if (!readToken()) return 'unauthenticated'

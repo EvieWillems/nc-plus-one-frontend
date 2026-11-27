@@ -1,7 +1,6 @@
 import { useState, type ChangeEvent, type FormEvent } from "react";
 import type { LoginDetails } from "../types/types";
 import { useUser } from "../auth/userContext";
-import ErrorPage from "./ErrorPage";
 import registerUser from "../api/registerUser";
 import LoginSignupForm from "../components/LoginSignupForm";
 
@@ -14,7 +13,7 @@ export default function LoginSignupPage() {
     const [userFormState, setUserFormState] = useState<LoginDetails>({email:'',password:''})
     const [toggleState, setToggleState] = useState<Toggle>('login')
 
-    const {userStatus,login} = useUser()
+    const {login} = useUser()
 
     const formValues = userFormState
 

@@ -4,7 +4,6 @@ import EventCard from "./EventCard";
 import NotFoundPage from "../pages/NotFoundPage";
 import EmptyPage from "../pages/EmptyPage";
 import RsvpButton from './RsvpButton'
-import { addRsvp,deleteRsvp } from "../api/rsvps";
 
 
 
